@@ -12,14 +12,27 @@ import { FormsModule, } from '@angular/forms';
   imports: [CommonModule,RouterModule, FormsModule ],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.css'
+
+  
+
 })
 export class PokemonListComponent {
+
+  typeIcons: { [key: string]: string } = {
+    normal: '⚪', fire: '🔥', water: '💧', electric: '⚡', grass: '🌿', ice: '❄️',
+    fighting: '🥊', poison: '☠️', ground: '🌎', flying: '🕊️', psychic: '🔮',
+    bug: '🐛', rock: '🪨', ghost: '👻', dragon: '🐉', dark: '🌑', steel: '🔩', fairy: '✨'
+  };
+  
+
   http = inject(HttpClient);
   pokemonList: any[] = [];
   filteredPokemon: any[] = [];
   isLoading = false;
   searchText = '';
   expandedPokemonId: number | null = null; //  ID
+
+  
 
   constructor() {
     this.fetchPokemon();
