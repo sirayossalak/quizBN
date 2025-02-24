@@ -5,6 +5,29 @@ p {
    }
    
 
+input {
+     width: 100%;
+     padding: 8px;
+     margin-bottom: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 14px;
+   }
+   
+
+.progress-bar {
+     width: 100%;
+     background: #eee;
+     border-radius: 5px;
+     overflow: hidden;
+   }
+   
+   .progress {
+     height: 10px;
+     background: #4caf50;
+     transition: width 0.3s ease-in-out;
+   }
+   
 
 
 

@@ -1,6 +1,9 @@
 
 <h3>Pokémon List</h3>
 
+<input type="text" [(ngModel)]="searchText" (input)="filterPokemon()" placeholder="Search Pokémon..." />
+
+
 <div *ngIf="isLoading">Loading...</div>
 
 <div *ngIf="filteredPokemon.length > 0" class="pokemon-grid">
@@ -23,6 +26,21 @@
       <p><strong>Weight:</strong> {{ pokemon.details?.weight }}</p>
       <p><strong>Abilities:</strong> {{ pokemon.details?.abilities.join(', ') }}</p>
       <p><strong>Types:</strong> {{ pokemon.details?.types.join(', ') }}</p>
+
+
+      <div *ngIf="pokemon.details">
+          <p><strong>Stats:</strong></p>
+          <div *ngFor="let stat of pokemon.details.stats">
+            <p>{{ stat.name }}: {{ stat.value }}</p>
+            <div class="progress-bar">
+              <div class="progress" [style.width.%]="(stat.value / 150) * 100"></div>
+            </div>
+          </div>
+        </div>
+        
+
+
+
     </div>
   </div>
 </div>

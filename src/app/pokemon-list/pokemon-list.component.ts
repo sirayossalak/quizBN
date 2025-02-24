@@ -59,19 +59,31 @@ export class PokemonListComponent {
     );
   }
 
+  filterPokemon() {
+    this.filteredPokemon = this.pokemonList.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+  
+
+
   fetchPokemonDetails(pokemon: any) {
     if (pokemon.details) {
       this.expandedPokemonId = this.expandedPokemonId === pokemon.id ? null : pokemon.id;
       return;
     }
-
+  
     this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).subscribe(
       (data) => {
         pokemon.details = {
           weight: data.weight,
           height: data.height,
           abilities: data.abilities.map((a: any) => a.ability.name),
-          types: data.types.map((t: any) => t.type.name)
+          types: data.types.map((t: any) => t.type.name),
+          stats: data.stats.map((s: any) => ({
+            name: s.stat.name,
+            value: s.base_stat
+          }))
         };
         this.expandedPokemonId = pokemon.id;
       },
@@ -80,5 +92,5 @@ export class PokemonListComponent {
       }
     );
   }
-}
+  }
 
