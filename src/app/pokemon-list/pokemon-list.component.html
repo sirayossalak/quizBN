@@ -3,9 +3,22 @@
 
 <div *ngIf="isLoading">Loading...</div>
 
-<div *ngIf="!isLoading" class="pokemon-grid">
-  <div *ngFor="let pokemon of pokemonList" class="pokemon-card">
-    <img [src]="pokemon.image" [alt]="pokemon.name" />
-    <p>{{ pokemon.name | titlecase }}</p>
+<div *ngIf="filteredPokemon.length > 0" class="pokemon-grid">
+  <div *ngFor="let pokemon of filteredPokemon" class="pokemon-card">
+    <div (click)="fetchPokemonDetails(pokemon)" class="pokemon-item">
+      <img [src]="pokemon.image" [alt]="pokemon.name" />
+      <p>{{ pokemon.name | titlecase }}</p>
+    </div>
+
+    <div *ngIf="expandedPokemonId === pokemon.id" class="pokemon-details">
+      <p><strong>Height:</strong> {{ pokemon.details?.height }}</p>
+      <p><strong>Weight:</strong> {{ pokemon.details?.weight }}</p>
+      <p><strong>Abilities:</strong> {{ pokemon.details?.abilities.join(', ') }}</p>
+      <p><strong>Types:</strong> {{ pokemon.details?.types.join(', ') }}</p>
+    </div>
   </div>
+</div>
+
+<div *ngIf="!isLoading && filteredPokemon.length === 0">
+  <p>No Pokémon found</p>
 </div>

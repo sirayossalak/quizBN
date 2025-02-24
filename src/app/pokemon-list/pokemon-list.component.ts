@@ -16,7 +16,10 @@ import { FormsModule, } from '@angular/forms';
 export class PokemonListComponent {
   http = inject(HttpClient);
   pokemonList: any[] = [];
+  filteredPokemon: any[] = [];
   isLoading = false;
+  searchText = '';
+  expandedPokemonId: number | null = null; //  ID
 
   constructor() {
     this.fetchPokemon();
@@ -26,15 +29,14 @@ export class PokemonListComponent {
     this.isLoading = true;
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon?offset=0&limit=151').subscribe(
       (response) => {
-        const pokemonResults = response.results;
-        
-        // ดึงข้อมูลรายละเอียดของแต่ละโปเกมอน
-        this.pokemonList = pokemonResults.map((pokemon: any, index: number) => ({
+        this.pokemonList = response.results.map((pokemon: any, index: number) => ({
+          id: index + 1,
           name: pokemon.name,
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
-          url: pokemon.url
+          url: pokemon.url,
+          details: null 
         }));
-
+        this.filteredPokemon = [...this.pokemonList];
         this.isLoading = false;
       },
       (error) => {
@@ -43,4 +45,27 @@ export class PokemonListComponent {
       }
     );
   }
+
+  fetchPokemonDetails(pokemon: any) {
+    if (pokemon.details) {
+      this.expandedPokemonId = this.expandedPokemonId === pokemon.id ? null : pokemon.id;
+      return;
+    }
+
+    this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).subscribe(
+      (data) => {
+        pokemon.details = {
+          weight: data.weight,
+          height: data.height,
+          abilities: data.abilities.map((a: any) => a.ability.name),
+          types: data.types.map((t: any) => t.type.name)
+        };
+        this.expandedPokemonId = pokemon.id;
+      },
+      (error) => {
+        console.error('Error fetching Pokémon details:', error);
+      }
+    );
+  }
 }
+
