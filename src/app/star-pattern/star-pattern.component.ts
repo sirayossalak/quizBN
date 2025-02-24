@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule,NgFor,NgIf],
   templateUrl: './star-pattern.component.html',
   styleUrls: ['./star-pattern.component.css']
+
+  
 })
 export class StarPatternComponent {
   starCount: number = 5; 
@@ -31,4 +33,8 @@ export class StarPatternComponent {
 
     console.log(this.starPattern);
   }
+
+  
+
+
 }

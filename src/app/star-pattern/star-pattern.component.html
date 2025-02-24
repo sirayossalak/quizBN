@@ -5,7 +5,10 @@
 
 <button (click)="generateStarPattern()">Submit</button>
 
+
+
 <div *ngIf="starPattern.length > 0">
   <p *ngFor="let line of starPattern">{{ line }}</p>
+  
 </div>
 
