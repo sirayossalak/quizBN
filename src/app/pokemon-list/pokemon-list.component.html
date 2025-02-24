@@ -1,0 +1,11 @@
+
+<h3>Pokémon List</h3>
+
+<div *ngIf="isLoading">Loading...</div>
+
+<div *ngIf="!isLoading" class="pokemon-grid">
+  <div *ngFor="let pokemon of pokemonList" class="pokemon-card">
+    <img [src]="pokemon.image" [alt]="pokemon.name" />
+    <p>{{ pokemon.name | titlecase }}</p>
+  </div>
+</div>

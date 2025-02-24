@@ -1,0 +1,19 @@
+<h3 *ngIf="pokemon">{{ pokemon.name | titlecase }} (ID: {{ pokemon.id }})</h3>
+
+<div *ngIf="isLoading">Loading...</div>
+
+<div *ngIf="pokemon">
+  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+  <p><strong>Height:</strong> {{ pokemon.height }}</p>
+  <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
+  <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
+
+  <h4>Abilities</h4>
+  <ul>
+    <li *ngFor="let ability of pokemon.abilities">
+      {{ ability.ability.name | titlecase }}
+    </li>
+  </ul>
+
+  <a routerLink="/">Back to List</a>
+</div>
