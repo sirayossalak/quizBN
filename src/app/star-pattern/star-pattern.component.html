@@ -1,11 +1,14 @@
+
 <h3>Star Pattern Generator</h3>
 
-<label for="starCount">Enter number of stars:</label>
-<input id="starCount" type="number" [(ngModel)]="starCount" />
+<div class="star-pattern-container">
 
-<button (click)="generateStarPattern()">Submit</button>
+  <label for="starCount">Enter number of stars:</label>
+  <input id="starCount" type="number" [(ngModel)]="starCount" />
 
+  <button (click)="generateStarPattern()">Submit</button>
 
+</div>
 
 <div *ngIf="starPattern.length > 0">
   <p *ngFor="let line of starPattern">{{ line }}</p>
