@@ -2,7 +2,7 @@
 .sidebar {
      width: 0; 
      height: 100%;
-     background-color: #333;
+     background-color: #003e90;
      position: fixed;
      top: 0;
      left: 0;
@@ -99,15 +99,19 @@
    /* < 576px */
    @media (max-width: 575px) {
      .sidebar {
-       width: 20px;
+       
+       width: 50px;
+       background-color: #33333300;
      }
    
      .sidebar.open {
        width: 100px;
+       background-color: #003e90;
      }
    
      .toggle-btn {
        display: block; 
+       background-color: #003e90;
      }
    
      .content {
