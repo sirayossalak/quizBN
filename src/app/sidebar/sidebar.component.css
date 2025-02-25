@@ -1,6 +1,6 @@
-/* สไตล์ทั่วไปสำหรับ Sidebar */
+/*  Sidebar */
 .sidebar {
-     width: 0; /* เริ่มต้น Sidebar ซ่อนอยู่ */
+     width: 0; 
      height: 100%;
      background-color: #333;
      position: fixed;
@@ -38,7 +38,7 @@
      
    }
    
-   /* ปุ่ม Toggle */
+   /* botton */
    .toggle-btn {
      display: none;
      position: absolute;
@@ -51,10 +51,10 @@
      padding: 10px;
      cursor: pointer;
      transform: translateX(-110%); 
-     transition: transform 0.3s ease, left 0.3s ease; /* การเคลื่อนไหวเมื่อคลิก */
+     transition: transform 0.3s ease, left 0.3s ease; 
 }
    
-   /* เมื่อ Sidebar เปิด */
+   
    .sidebar.open {
      width: 200px;
      
@@ -69,49 +69,49 @@
 
 
    .toggle-btn.open {
-     transform: rotate(90deg); /* หมุนปุ่ม 90 องศาเมื่อเปิด */
-     left: 90%; /* ขยับปุ่มไปทางขวาเมื่อ Sidebar เปิด */
+     transform: rotate(90deg); 
+     left: 90%; 
      
      
    }
    
    
-   /* สำหรับหน้าจอที่มีขนาดใหญ่กว่าหรือเท่ากับ 576px */
+   /* > 576px */
    @media (min-width: 576px) {
      .toggle-btn {
-       display: block; /* แสดงปุ่ม Toggle ในหน้าจอใหญ่ */
+       display: block; 
        
      }
    
      .sidebar {
-       width: 70px; /* Sidebar ซ่อนในขนาดหน้าจอใหญ่ */
+       width: 70px;
      }
    
      .sidebar.open {
-       width: 300px; /* เปิด Sidebar เมื่อคลิกปุ่ม Toggle */
+       width: 300px; 
      }
    
      .content {
-       margin-left: 0; /* เนื้อหาหลักไม่ต้องขยับในขนาดหน้าจอใหญ่ */
+       margin-left: 10px; 
      }
    }
    
-   /* สำหรับหน้าจอที่มีขนาดน้อยกว่า 576px */
+   /* < 576px */
    @media (max-width: 575px) {
      .sidebar {
-       width: 70px; /* ปิด Sidebar ในขนาดหน้าจอเล็ก */
+       width: 20px;
      }
    
      .sidebar.open {
-       width: 250px; /* เปิด Sidebar เมื่อคลิกปุ่ม Toggle */
+       width: 100px;
      }
    
      .toggle-btn {
-       display: block; /* แสดงปุ่ม Toggle ในขนาดหน้าจอเล็ก */
+       display: block; 
      }
    
      .content {
-       margin-left: 0; /* เนื้อหาหลักไม่ต้องขยับ */
+       margin-left: 10px;
      }
    }
    

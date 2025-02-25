@@ -6,5 +6,5 @@
 }
 
 .sidebar.open ~ .content {
-  margin-left: 250px; /* ให้เนื้อหาหลักขยับไปทางขวาเมื่อ Sidebar เปิด */
+  margin-left: 250px;
 }

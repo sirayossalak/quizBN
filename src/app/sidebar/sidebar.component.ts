@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  isOpen = false; // สถานะของ Sidebar
+  isOpen = false; 
 
   toggleSidebar() {
-    this.isOpen = !this.isOpen; // เปลี่ยนสถานะการเปิดหรือปิด Sidebar
+    this.isOpen = !this.isOpen;
   }
 }
