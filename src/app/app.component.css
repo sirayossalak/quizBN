@@ -23,38 +23,38 @@ body, html {
 
 /* === Responsive Layout === */
 
-/* 📌 สำหรับหน้าจอใหญ่กว่า 576px (Desktop/Tablet) */
+/* 576px (Desktop/Tablet) */
 @media (min-width: 576px) {
   .container {
-    flex-direction: row; /* Sidebar และ Content วางแนวนอน */
+    flex-direction: row; 
   }
 
   .content {
-    margin-left: 70px; /* ระยะขอบเริ่มต้นของเนื้อหา */
+    margin-left: 70px; 
   }
 
   .sidebar.open + .content {
-    margin-left: 300px; /* ขยับเนื้อหาเมื่อ Sidebar เปิด */
+    margin-left: 300px; 
   }
 }
 
-/* 📌 สำหรับหน้าจอเล็กกว่า 576px (Mobile) */
+/* 576px (Mobile) */
 @media (max-width: 575px) {
   .container {
-    flex-direction: column; /* เปลี่ยนเป็นเรียงแนวตั้ง */
+    flex-direction: column; 
   }
 
   .sidebar {
-    width: 0; /* ซ่อน Sidebar เริ่มต้น */
+    width: 0; 
     height: auto;
   }
 
   .sidebar.open {
-    width: 250px; /* เปิด Sidebar แบบเต็ม */
+    width: 250px; 
   }
 
   .content {
-    margin-left: 0; /* ไม่มีระยะขอบ */
+    margin-left: 0; 
     padding: 15px;
   }
 }
