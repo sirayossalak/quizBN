@@ -1,10 +1,60 @@
-/* app.component.css */
-.content {
-  margin-left: 0;
-  padding: 20px;
-  transition: margin-left 0.3s ease;
+/* === ตั้งค่าทั่วไป === */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  height: 100%;
 }
 
-.sidebar.open ~ .content {
-  margin-left: 250px;
+/* === Layout หลัก === */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* === Content Area (พื้นที่แสดงเนื้อหา) === */
+.content {
+  flex-grow: 1; /* ให้พื้นที่เนื้อหาเต็มที่ */
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+  background-color: #f4f4f422;
+}
+
+/* === Responsive Layout === */
+
+/* 📌 สำหรับหน้าจอใหญ่กว่า 576px (Desktop/Tablet) */
+@media (min-width: 576px) {
+  .container {
+    flex-direction: row; /* Sidebar และ Content วางแนวนอน */
+  }
+
+  .content {
+    margin-left: 70px; /* ระยะขอบเริ่มต้นของเนื้อหา */
+  }
+
+  .sidebar.open + .content {
+    margin-left: 300px; /* ขยับเนื้อหาเมื่อ Sidebar เปิด */
+  }
+}
+
+/* 📌 สำหรับหน้าจอเล็กกว่า 576px (Mobile) */
+@media (max-width: 575px) {
+  .container {
+    flex-direction: column; /* เปลี่ยนเป็นเรียงแนวตั้ง */
+  }
+
+  .sidebar {
+    width: 0; /* ซ่อน Sidebar เริ่มต้น */
+    height: auto;
+  }
+
+  .sidebar.open {
+    width: 250px; /* เปิด Sidebar แบบเต็ม */
+  }
+
+  .content {
+    margin-left: 0; /* ไม่มีระยะขอบ */
+    padding: 15px;
+  }
 }
